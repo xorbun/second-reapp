@@ -18,8 +18,11 @@ function App()
         <Mybooks/>
       </header>
       <main>
-        <Footer/>
+        
       </main>
+      <footer>
+      <Footer/>
+      </footer>
     </div>
   );
 }
