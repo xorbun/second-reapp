@@ -15,7 +15,7 @@ function Mybooks()
                   <Col key={copertina.asin} xs={12} md={6} lg={3}>
                     <Card>
                       <Card.Body>
-                        <img  src={copertina.img} alt="{copertina}"width="150px" />
+                        <img  src={copertina.img} alt="{copertina}"width="100%" />
                         <Card.Title>TITOLO: {copertina.title}</Card.Title>
                         <Card.Text>GENERE: {copertina.category}</Card.Text>
                         <Card.Text>PREZZO: {copertina.price} $</Card.Text>
