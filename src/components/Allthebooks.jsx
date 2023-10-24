@@ -6,24 +6,24 @@ import Col from 'react-bootstrap/Col';
 function Mybooks() 
 {
   return(
-    Allthebooks.map((copertina)=>
-                        {
-                          return(
           <Container>
-            <Row >
-              <Col xs={6} md={8}>
-                <Card>
-                    <Card.Body>
-                    {
-                        <img key={copertina.asin} src={copertina.img} alt="{copertina}"width="100%" />
-                    }
-                    </Card.Body>
-                </Card>
-              </Col>
+            <Row>
+              {
+                Allthebooks.map((copertina)=>
+                {
+                return(
+                  <Col xs={12} md={6} lg={3}>
+                    <Card>
+                      <Card.Body>
+                        <img key={copertina.asin} src={copertina.img} alt="{copertina}"width="150px" />
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  )
+                })
+              }
             </Row>
           </Container>
-           )
-        })   
   );
 }
 export default Mybooks;
