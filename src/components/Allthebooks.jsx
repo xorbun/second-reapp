@@ -12,10 +12,13 @@ function Mybooks()
                 Allthebooks.map((copertina)=>
                 {
                 return(
-                  <Col xs={12} md={6} lg={3}>
+                  <Col key={copertina.asin} xs={12} md={6} lg={3}>
                     <Card>
                       <Card.Body>
-                        <img key={copertina.asin} src={copertina.img} alt="{copertina}"width="150px" />
+                        <img  src={copertina.img} alt="{copertina}"width="150px" />
+                        <Card.Title>TITOLO: {copertina.title}</Card.Title>
+                        <Card.Text>GENERE: {copertina.category}</Card.Text>
+                        <Card.Text>PREZZO: {copertina.price} $</Card.Text>
                       </Card.Body>
                     </Card>
                   </Col>
