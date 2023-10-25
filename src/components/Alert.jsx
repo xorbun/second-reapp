@@ -12,7 +12,7 @@ function Myalert() {
         
       ].map((variant) => (
         <Alert key={variant} variant={variant}>
-          Benvenuti in questo sito senza senso
+          Benvenuti in questo sito
         </Alert>
       ))}
       </Col>

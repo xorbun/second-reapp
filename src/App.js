@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Mynav from './components/Navbar';
 import Footer from './components/footer';
 import Myalert from './components/Alert';
-import Mybooks from './components/Allthebooks';
-
+import Fantasybook from "./data/fantasy.json"
+import Booklist from './components/Booklist';
 
 
 function App() 
@@ -15,10 +15,10 @@ function App()
       <header>
         <Mynav/>
         <Myalert/>
-        <Mybooks/>
+     
       </header>
       <main>
-        
+      <Booklist books={Fantasybook}/>
       </main>
       <footer>
       <Footer/>
