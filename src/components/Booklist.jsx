@@ -1,12 +1,12 @@
-import Singlebook from "./Singlebook";
+import Singlebook from "./Singlebook"
 
 
 function Booklist(props)
 {
-    props.books.map(book=>
-    {   
-        return(
-            <Singlebook img={book.img}/>
+    return props.books.map((book)=>
+    {
+        return (
+        <Singlebook immagine={book.img}/>
         )
     })
 }

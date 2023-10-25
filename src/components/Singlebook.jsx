@@ -6,7 +6,7 @@ function Singlebook(props)
     return(
         <Card>
         <Card.Body>
-          <img src={props.img} alt="boh" width="100%" />
+          <img src={props.immagine} alt="boh" width="150px" />
         </Card.Body>
       </Card>
     )
