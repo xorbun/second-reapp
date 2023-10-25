@@ -1,13 +1,14 @@
 import Singlebook from "./Singlebook"
+import { Component } from "react"
 
-
-function Booklist(props)
+class Booklist extends Component
 {
-    return props.books.map((book)=>
+    render()
     {
-        return (
-        <Singlebook img={book.img}/>
-        )
-    })
+        return this.props.books.map((book)=>
+        {
+            return <Singlebook key={book.asin} immagine={book.img}/>
+        })
+    }
 }
 export default Booklist
