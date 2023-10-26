@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+.red-border
+{
+  border: 3px solid red !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
