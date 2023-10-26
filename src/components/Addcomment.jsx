@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
 
 
 class AddComment extends Component
@@ -33,9 +33,7 @@ class AddComment extends Component
         />
         
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+     
     </Form>
         )
     }
@@ -51,6 +49,7 @@ class AddComment extends Component
 Addcomment=function(e)
 {
     e.preventDefault()
+
     fetch("https://striveschool-api.herokuapp.com/api/comments/" +this.props.id ,
     {
         method: 'POST',
