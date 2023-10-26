@@ -16,7 +16,7 @@ class Booklist extends Component
                         {
                             return( 
                                 <Col key={book.asin} xs={12} md={6} lg={3}>
-                                    <Singlebook  immagine={book.img}/>
+                                    <Singlebook  immagine={book.img} asin={book.asin}/>
                                 </Col>
                             )
                         })

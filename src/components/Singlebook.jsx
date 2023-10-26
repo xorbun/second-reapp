@@ -1,6 +1,6 @@
 
 import Card from 'react-bootstrap/Card';
-
+import ListGroup from 'react-bootstrap/ListGroup';
 import { Component } from 'react';
 import CommentArea from './CommentArea';
 
@@ -28,7 +28,8 @@ class Singlebook extends Component
         >
             <Card.Body>
                 <img src={this.props.immagine} alt="boh" width="150px" onClick={this.Selectedbook}  />
-                {this.state.selected &&<CommentArea id={this.props.asin}/>}
+                {this.state.selected &&<CommentArea id={this.props.asin} />}
+                
             </Card.Body>
         </Card>
         )

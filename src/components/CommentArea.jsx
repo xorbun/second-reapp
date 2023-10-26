@@ -1,26 +1,26 @@
 import { Component } from "react"
 import AddComment from "./Addcomment"
+import ListGroup from 'react-bootstrap/ListGroup';
 
 class CommentArea extends Component 
 {
- render()
- {
-    return(
-        <AddComment/>
-    )
- }
+  state=
+  {
+    comments:[]
+  }
+
  componentDidMount()
  {
-    this.getcomments()
+    this.getcomments(this.props)
  }
 
- getcomments=function()
+ getcomments=()=>
 {
-    fetch("https://striveschool-api.herokuapp.com/api/comments/ "+ this.props.id,
+    fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.id,
     {
         headers:
         {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTNhNTUxNmY2ZTNkZDAwMTQ5NWU0MzkiLCJpYXQiOjE2OTgzMjE2ODYsImV4cCI6MTY5OTUzMTI4Nn0.B92g9Ym4d32b3wyk8u_T2-mY4NumLeAGsBperWtpC18"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTNhNTUxNmY2ZTNkZDAwMTQ5NWU0MzkiLCJpYXQiOjE2OTgzNDY4MDgsImV4cCI6MTY5OTU1NjQwOH0.3sfhByXEpN3LCTnEo9VG9yREEZ31raucETJyMHhtlVE"
         }
     })
 
@@ -38,14 +38,32 @@ class CommentArea extends Component
 })
 .then((data)=>
 {
-    console.log(data)
-    
+  console.log(data)
+  this.setState({comments:data})
+  
 })
 .catch((err)=>
 {
     console.log(err)
 })
  
+}
+render()
+{
+   return(
+    <>
+       <AddComment idasin={this.props.id}/>
+       <ListGroup>
+        {this.state.comments.map((commento)=>
+        {
+            return(
+                
+                <ListGroup.Item key={commento._id}>{commento.comment}</ListGroup.Item>
+            )
+        })}
+        </ListGroup>
+    </> 
+   )
 }
 }
 export default CommentArea
