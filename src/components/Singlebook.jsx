@@ -23,11 +23,16 @@ class Singlebook extends Component
     render()
     {    
         return(
-        <Card  className={this.state.selected ? 'red-border' :''} key={this.props.asin} >
+        <Card  className={this.state.selected ? 'red-border' :''} key={this.props.asin}>
             <Card.Body >
-                <img src={this.props.immagine} alt="boh" width="150px" onClick={this.Selectedbook}  />
+                <img src={this.props.immagine} alt="boh" width="150px" onClick={()=>
+                    {
+                        this.props.test2(this.props.asin)
+                       
+                    } 
+                    }/>
                 {this.state.selected &&<CommentArea id={this.props.asin} 
-                onClick={()=>this.props.test(this.props.asin)}
+                
                 />}
                 
                 

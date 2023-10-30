@@ -17,9 +17,9 @@ class Booklist extends Component
                         {
                             return( 
                                 <Col key={book.asin} xs={12} md={6} lg={6}>
-                                    <Singlebook  immagine={book.img} asin={book.asin}  
-                                    onClick={()=>this.props.test(book.asin)}/>
-                                   
+                                    <Singlebook  immagine={book.img} asin={book.asin} 
+                                    test2={this.props.test}/>
+                                  
                                 </Col>
                             )
                         })
