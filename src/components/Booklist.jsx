@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 class Booklist extends Component
 {
+
     render()
     {
         return(
@@ -15,12 +16,15 @@ class Booklist extends Component
                         this.props.books.map((book)=>
                         {
                             return( 
-                                <Col key={book.asin} xs={12} md={6} lg={3}>
-                                    <Singlebook  immagine={book.img} asin={book.asin}/>
+                                <Col key={book.asin} xs={12} md={6} lg={6}>
+                                    <Singlebook  immagine={book.img} asin={book.asin}  
+                                    onClick={()=>this.props.test(book.asin)}/>
+                                   
                                 </Col>
                             )
                         })
                     }
+                    
                 </Row>
             </Container>
         )

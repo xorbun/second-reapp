@@ -1,8 +1,9 @@
 
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+
 import { Component } from 'react';
 import CommentArea from './CommentArea';
+
 
 
 class Singlebook extends Component 
@@ -22,13 +23,13 @@ class Singlebook extends Component
     render()
     {    
         return(
-        <Card  className={this.state.selected ? 'red-border' :''} key={this.props.asin}
-            
-           
-        >
-            <Card.Body>
+        <Card  className={this.state.selected ? 'red-border' :''} key={this.props.asin} >
+            <Card.Body >
                 <img src={this.props.immagine} alt="boh" width="150px" onClick={this.Selectedbook}  />
-                {this.state.selected &&<CommentArea id={this.props.asin} />}
+                {this.state.selected &&<CommentArea id={this.props.asin} 
+                onClick={()=>this.props.test(this.props.asin)}
+                />}
+                
                 
             </Card.Body>
         </Card>

@@ -9,14 +9,18 @@ class CommentArea extends Component
     comments:[]
   }
 
- componentDidMount()
+ 
+ componentDidUpdate(prevProps)
  {
-    this.getcomments(this.props)
+    if (prevProps.asin !==this.props.asin)
+    {
+        this.getcomments()
+    }
  }
 
  getcomments=()=>
 {
-    fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.id,
+    fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin,
     {
         headers:
         {
