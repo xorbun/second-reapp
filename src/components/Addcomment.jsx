@@ -1,23 +1,23 @@
-import { Component } from 'react'
+import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
-class AddComment extends Component {
-  state = {
-    comment: {
-      comment: '',
-      rate: 1,
-      elementId: this.props.idasin,
-    },
-  }
+const AddComment=(props)=>  
+{
+ 
+  const [comment, setcomment]= useState({
+    comment:"",
+    rate:1,
+    elementId:props.idasin,
+  })
 
-  sendComment = async (e) => {
+   const sendComment = async (e) => {
     e.preventDefault()
     try {
       let response = await fetch(
         'https://striveschool-api.herokuapp.com/api/comments/',
         {
           method: 'POST',
-          body: JSON.stringify(this.state.comment),
+          body: JSON.stringify(comment),
           headers: {
             'Content-type': 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTNhNTUxNmY2ZTNkZDAwMTQ5NWU0MzkiLCJpYXQiOjE2OTgzNDY4MDgsImV4cCI6MTY5OTU1NjQwOH0.3sfhByXEpN3LCTnEo9VG9yREEZ31raucETJyMHhtlVE',
@@ -26,12 +26,10 @@ class AddComment extends Component {
       )
       if (response.ok) {
         alert('Recensione inviata!')
-        this.setState({
-          comment: {
-            comment: '',
-            rate: 1,
-            elementId: this.props.idasin,
-          },
+        setcomment({
+          comment: '',
+          rate: 1,
+          elementId:props.idasin,
         })
       } else {
         throw new Error('Qualcosa è andato storto')
@@ -41,22 +39,20 @@ class AddComment extends Component {
     }
   }
 
-  render() {
+  
     return (
       <div className="my-3">
-        <Form onSubmit={this.sendComment}>
+        <Form onSubmit={sendComment}>
           <Form.Group className="mb-2">
             <Form.Label>Recensione</Form.Label>
             <Form.Control
               type="text"
               placeholder="Inserisci qui il testo"
-              value={this.state.comment.comment}
+              value={comment.comment}
               onChange={(e) =>
-                this.setState({
-                  comment: {
-                    ...this.state.comment,
-                    comment: e.target.value,
-                  },
+                setcomment({
+                  ...comment,
+                  comment: e.target.value
                 })
               }
             />
@@ -65,13 +61,11 @@ class AddComment extends Component {
             <Form.Label>Valutazione</Form.Label>
             <Form.Control
               as="select"
-              value={this.state.comment.rate}
+              value={comment.rate}
               onChange={(e) =>
-                this.setState({
-                  comment: {
-                    ...this.state.comment,
-                    rate: e.target.value,
-                  },
+                setcomment({
+                  ...comment,
+                  rate:e.target.value
                 })
               }
             >
@@ -88,7 +82,7 @@ class AddComment extends Component {
         </Form>
       </div>
     )
-  }
+  
 }
 
 export default AddComment

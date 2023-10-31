@@ -10,23 +10,19 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CommentArea from './components/CommentArea';
-import { Component } from 'react';
+import {useState } from 'react';
 
 
-class App extends Component 
+const App= ()=>
 {
-  state=
+  
+  const [commenti, setcommenti]=useState(" ")
+  
+  const changeAsin=(asin)=>
   {
-    commenti: "",
-    
-
+      setcommenti(asin)
   }
-  changeAsin=(asin)=>
-  {
-      this.setState({commenti:asin})
-  }
-  render()
-  {
+ 
   return (
     <div>
       <header>
@@ -38,10 +34,10 @@ class App extends Component
         <Container>
           <Row>
             <Col>
-              <Booklist books={Fantasybook} test={this.changeAsin}/>
+              <Booklist books={Fantasybook} test={changeAsin}/>
             </Col>
             <Col xs={12} md={6} lg={6}>
-              <CommentArea asin={this.state.commenti}/>
+              <CommentArea asin={commenti}/>
             </Col>
           </Row>
         </Container>
@@ -52,7 +48,7 @@ class App extends Component
       </footer>
     </div>
   );
-  }
+  
 }
 
 export default App;

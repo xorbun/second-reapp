@@ -1,26 +1,21 @@
-import { Component } from "react"
+
 import AddComment from "./Addcomment"
 import ListGroup from 'react-bootstrap/ListGroup';
-
-class CommentArea extends Component 
+import { useEffect, useState } from "react";
+const CommentArea=(props)=>
 {
-  state=
-  {
-    comments:[]
-  }
-
  
- componentDidUpdate(prevProps)
- {
-    if (prevProps.asin !==this.props.asin)
-    {
-        this.getcomments()
-    }
- }
 
- getcomments=()=>
+  const [comments,setcomments]= useState([])
+ 
+
+useEffect(() => {
+    getcomments()
+  }, [props.asin])
+
+ const getcomments=()=>
 {
-    fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin,
+    fetch("https://striveschool-api.herokuapp.com/api/comments/" + props.asin,
     {
         headers:
         {
@@ -43,7 +38,8 @@ class CommentArea extends Component
 .then((data)=>
 {
   console.log(data)
-  this.setState({comments:data})
+//   
+  setcomments(data)
   
 })
 .catch((err)=>
@@ -52,22 +48,23 @@ class CommentArea extends Component
 })
  
 }
-render()
-{
+
    return(
     <>
-       <AddComment idasin={this.props.id}/>
+       <AddComment idasin={props.id}/>
        <ListGroup>
-        {this.state.comments.map((commento)=>
+        {comments.map((commento)=>
         {
             return(
                 
-                <ListGroup.Item key={commento._id}>{commento.comment}</ListGroup.Item>
+                <ListGroup.Item key={commento._id}>
+                    {commento.comment}
+                    </ListGroup.Item>
             )
         })}
         </ListGroup>
     </> 
    )
-}
+
 }
 export default CommentArea
