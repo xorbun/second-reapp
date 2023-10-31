@@ -10,7 +10,11 @@ const CommentArea=(props)=>
  
 
 useEffect(() => {
-    getcomments()
+    if(props.asin)
+    {
+        getcomments()
+    }
+    
   }, [props.asin])
 
  const getcomments=()=>

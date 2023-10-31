@@ -16,7 +16,7 @@ import {useState } from 'react';
 const App= ()=>
 {
   
-  const [commenti, setcommenti]=useState(" ")
+  const [commenti, setcommenti]=useState("")
   
   const changeAsin=(asin)=>
   {
