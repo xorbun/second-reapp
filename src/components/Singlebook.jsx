@@ -1,6 +1,6 @@
 
 import Card from 'react-bootstrap/Card';
-
+import CommentArea from './CommentArea';
 import {  useState } from 'react';
 
 
@@ -27,6 +27,7 @@ const Singlebook=(props)=>
                         props.test2(props.asin)
                     } 
                 }/>
+                {setselected &&<CommentArea id={props.asin} />}
             </Card.Body>
         </Card>
         )
