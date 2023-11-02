@@ -21,9 +21,11 @@ const App= ()=>
   const changeAsin=(asin)=>
   {
       setcommenti(asin)
+     
   }
  
   return (
+    
     <div>
       <header>
         <Mynav/>
@@ -37,7 +39,7 @@ const App= ()=>
               <Booklist books={Fantasybook} test={changeAsin}/>
             </Col>
             <Col xs={12} md={6} lg={6}>
-              <CommentArea asin={commenti}/>
+              <CommentArea asin={commenti} />
             </Col>
           </Row>
         </Container>

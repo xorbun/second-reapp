@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 const AddComment=(props)=>  
@@ -10,6 +10,11 @@ const AddComment=(props)=>
     elementId:props.idasin,
   })
 
+  useEffect(()=>
+  {
+    setcomment({...comment, elementId:props.idasin})
+  },[props.idasin])
+  
    const sendComment = async (e) => {
     e.preventDefault()
     try {
@@ -38,9 +43,7 @@ const AddComment=(props)=>
       alert(error)
     }
   }
-
-  
-    return (
+  return (
       <div className="my-3">
         <Form onSubmit={sendComment}>
           <Form.Group className="mb-2">
@@ -51,7 +54,8 @@ const AddComment=(props)=>
               value={comment.comment}
               onChange={(e) =>
                 setcomment({
-                  ...comment,
+                  // per evitare di perdere tutto il contenuto settato precedentemente
+                  ...comment, 
                   comment: e.target.value
                 })
               }
